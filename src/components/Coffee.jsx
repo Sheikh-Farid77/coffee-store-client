@@ -1,8 +1,38 @@
+
 import DeleteIcon from "./svg/DeleteIcon";
 import EditIcon from "./svg/EditIcon";
 import ViewIcon from "./svg/ViewIcon";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+
 
 export default function Coffee({ coffee }) {
+  const handleDelete = () => {
+    console.log(coffee._id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+
+        fetch(`http://localhost:5000/coffee/${coffee._id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+      }
+    });
+  };
   return (
     <div className="bg-[#F4F3F0] rounded-lg shadow-md flex flex-col sm:flex-row items-center sm:items-start justify-between p-4 sm:p-6 w-full max-w-2xl mx-auto">
       {/* Coffee Image */}
@@ -35,7 +65,10 @@ export default function Coffee({ coffee }) {
         <button className="bg-gray-600 hover:bg-gray-700 cursor-pointer text-white p-2 rounded">
           <EditIcon />
         </button>
-        <button className="bg-red-600 hover:bg-red-700 cursor-pointer text-white p-2 rounded">
+        <button
+          onClick={handleDelete}
+          className="bg-red-600 hover:bg-red-700 cursor-pointer text-white p-2 rounded"
+        >
           <DeleteIcon />
         </button>
       </div>
