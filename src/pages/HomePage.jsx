@@ -1,7 +1,9 @@
+import AllProducts from "../components/AllProducts";
+
 export default function HomePage(){
     return (
         <>
-        This is home page
+      <AllProducts />
         </>
     );
 }

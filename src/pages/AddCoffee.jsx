@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Bg from "../assets/images/more/11.png";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 export default function AddCoffee() {
   const [coffeeInfo, setCoffeeInfo] = useState({
@@ -32,6 +34,12 @@ export default function AddCoffee() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        Swal.fire({
+          title: "Success!",
+          text: "Coffee added successfully",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
         setCoffeeInfo({
           name: "",
           quantity: "",
