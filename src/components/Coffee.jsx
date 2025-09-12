@@ -1,4 +1,5 @@
 
+import { Link } from "react-router";
 import DeleteIcon from "./svg/DeleteIcon";
 import EditIcon from "./svg/EditIcon";
 import ViewIcon from "./svg/ViewIcon";
@@ -62,9 +63,11 @@ export default function Coffee({ coffee }) {
         <button className="bg-yellow-600 hover:bg-yellow-700 text-white p-2 rounded cursor-pointer">
           <ViewIcon />
         </button>
+       <Link to={`/update_coffee/${coffee._id}`}>
         <button className="bg-gray-600 hover:bg-gray-700 cursor-pointer text-white p-2 rounded">
           <EditIcon />
         </button>
+       </Link>
         <button
           onClick={handleDelete}
           className="bg-red-600 hover:bg-red-700 cursor-pointer text-white p-2 rounded"
