@@ -5,7 +5,15 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 
 export default function UpdateCoffee() {
-  const [coffeeInfo, setCoffeeInfo] = useState({});
+  const [coffeeInfo, setCoffeeInfo] = useState({
+    name: "",
+    quantity: "",
+    supplier: "",
+    taste: "",
+    category: "",
+    details: "",
+    photo: "",
+  });
   const param = useParams();
   const navigate = useNavigate();
 
